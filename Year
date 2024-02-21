@@ -1,0 +1,48 @@
+# New 1
+def newton_raphson(func, func_prime, initial_guess, tolerance=1e-6, max_iterations=100):
+    """
+    Newton-Raphson method for finding the root of a function.
+
+    Parameters:
+    - func: The function for which we want to find the root.
+    - func_prime: The derivative of the function.
+    - initial_guess: Initial guess for the root.
+    - tolerance: Tolerance level for convergence (default is 1e-6).
+    - max_iterations: Maximum number of iterations (default is 100).
+
+    Returns:
+    - root: Approximation of the root.
+    - iterations: Number of iterations performed.
+    """
+
+    # Initialize the root with the initial guess
+    root = initial_guess
+    iterations = 0
+
+    while abs(func(root)) > tolerance and iterations < max_iterations:
+        # Update the root using the Newton-Raphson formula
+        root = root - func(root) / func_prime(root)
+
+        iterations += 1
+
+    return root, iterations
+
+
+# Example usage:
+if __name__ == "__main__":
+    # Define the function and its derivative
+    def my_function(x):
+        return x**2 - 4
+
+    def my_function_prime(x):
+        return 2 * x
+
+    # Initial guess for the root
+    initial_guess = 2.0
+
+    # Apply the Newton-Raphson method
+    root, iterations = newton_raphson(my_function, my_function_prime, initial_guess)
+
+    # Print the result
+    print(f"Root: {root}")
+    print(f"Iterations: {iterations}")
