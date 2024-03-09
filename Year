@@ -1,4 +1,4 @@
-# New  15
+# New  16
 def newton_raphson(func, func_prime, initial_guess, tolerance=1e-6, max_iterations=100):
     """
     Newton-Raphson method for finding the root of a function.
